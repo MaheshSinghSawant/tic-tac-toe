@@ -13,5 +13,5 @@ interface IButtonProps {
 }
 
 export function Button({ text, onClickHandler }: IButtonProps) {
-  return <div className="Button" onClick={onClickHandler}>{text}</div>
+  return <div className="Button u-largeFont u-flexCenter" onClick={onClickHandler}>{text}</div>
 }

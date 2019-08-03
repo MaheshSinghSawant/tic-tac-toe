@@ -7,5 +7,29 @@
 // 3. check diagonal and reverse diagonals for same value and if so, that value wins
 
 export function calculateWinner(row: number, col: number, board: any) {
-  
+  const isRowAllX = board[row].every((ele: number) => ele === 1)
+  if (isRowAllX) {
+    return 1
+  }
+
+  const isRowAllO = board[row].every((ele: number) => ele === -1)
+  if (isRowAllO) {
+    return 2
+  }
+  // create a list of all values in same column
+  let colValues = []
+  for (let i = 0; i < board.length; i++) {
+    colValues.push(board[i][col])
+  }
+
+  const isColAllX = colValues.every((ele: number) => ele === 1)
+  if (isColAllX) {
+    return 1
+  }
+  const isColAllO = colValues.every((ele: number) => ele === -1)
+  if (isColAllO) {
+    return 2
+  }
+
+  return 0
 }

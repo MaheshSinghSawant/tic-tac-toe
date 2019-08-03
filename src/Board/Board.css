@@ -16,21 +16,14 @@
 }
 
 .Board-content {
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Each cell has a border and can  */
 .Board-cell {
   box-sizing: border-box;
   border: 5px solid var(--theme-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--theme-color);
 }
 
 /* create border around the board that overlaps all 4 edges of the board with backgorund color
@@ -50,9 +43,6 @@
   align-items: center;
 }
 
-.Board-players {
-  font-size: 20px;
-  font-variant-caps: all-petite-caps;
-  font-weight: bold;
-  color: var(--theme-color);
+.Board-winnerModal {
+  flex-direction: column;
 }

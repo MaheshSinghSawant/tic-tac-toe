@@ -3,6 +3,7 @@
 import React from "react"
 import "./Board.css"
 import { Button } from "../Button/Button"
+import { calculateWinner } from "../calculateVictory"
 
 interface IBoardProps {
   /**
@@ -38,12 +39,6 @@ export function Board({ size }: IBoardProps) {
     }
   }, [size])
 
-  // React.useEffect(() => {
-  //   if(state.winner === 1) {
-
-  //   }
-  // }, [state.winner])
-
   /* When a cell is clicked on extract the row and col value from the cell that was clicked
    * update board with 1 if player 1 was playing so that an 'X' is shown in the cell
    * or update board with -1 for other player, so that 'O 'is shown
@@ -53,12 +48,12 @@ export function Board({ size }: IBoardProps) {
   const handleClick = (row: number, col: number) => {
     let newBoard = state.board
     newBoard[row][col] = state.player1 ? 1 : -1
-    // let winner = getWinner(row, col, newBoard)
+    let winner = calculateWinner(row, col, newBoard)
     setState({
       ...state,
       board: newBoard,
-      player1: !state.player1
-      // winner: winner
+      player1: !state.player1,
+      winner: winner
     })
   }
 
@@ -76,11 +71,25 @@ export function Board({ size }: IBoardProps) {
    * 
    */
   const restartButton = (
-    <Button text={"Restart Game"} onClickHandler={() => window.location.reload()} />
+    <Button
+      text={"Restart Game"}
+      onClickHandler={() => window.location.reload()}
+    />
   )
+  console.log(state.winner)
+
+  if (state.winner > 0) {
+    return (
+      <div className="Board-winnerModal u-flexCenter">
+        <div className="u-extraLargeFont">{`Player ${state.winner} Wins!`}</div>
+        {restartButton}
+      </div>
+    )
+  }
+
   return (
     <div className="Board-container">
-      <div className="Board Board-content">
+      <div className="Board Board-content u-flexCenter">
         {state.board.map((row, ridx) => {
           return row.map((col, cidx) => {
             let content = ""
@@ -93,7 +102,7 @@ export function Board({ size }: IBoardProps) {
               <div
                 key={`cell-${ridx},${cidx}`}
                 onClick={() => handleClick(ridx, cidx)}
-                className="Board-cell"
+                className="Board-cell u-flexCenter u-colorTheme"
                 style={{
                   height: state.cellSize,
                   width: state.cellSize
@@ -113,8 +122,8 @@ export function Board({ size }: IBoardProps) {
       </div>
       <div className="Board Board-border"></div>
       <div className="Board-details">
-        <div className="Board-players">Player 1 : X</div>
-        <div className="Board-players">Player 2 : O</div>
+        <div className="u-colorTheme u-largeFont">Player 1 : X</div>
+        <div className="u-colorTheme u-largeFont">Player 2 : O</div>
         {restartButton}
       </div>
     </div>

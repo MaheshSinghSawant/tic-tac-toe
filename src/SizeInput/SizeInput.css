@@ -1,26 +1,13 @@
 .SizeInput {
   width: 100%;
-  /* height: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.SizeInput-gameHeader {
-  font-size: 100px;
-  font-variant-caps: all-petite-caps;
-  font-weight: bold;
-  color: var(--theme-color);
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
 .SizeInput-inputHeader {
   width: 250px;
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--theme-color);
   margin-bottom: 20px;
 }
 
@@ -28,9 +15,6 @@
   height: 40px;
   width: 250px;
   color: var(--theme-color);
-  font-size: large;
-  font-variant-caps: all-petite-caps;
-  font-weight: bold;
   padding-left: 10px;
   border: 2px solid var(--theme-color);
   border-radius: 4px;
@@ -42,12 +26,12 @@
   height: 40px;
   width: 260px;
   background-color: var(--theme-color);
-  font-size: large;
-  font-variant-caps: all-petite-caps;
   color: white;
   border-radius: 4px;
+
 }
 
 .SizeInput-error {
+  margin-top: 20px;
   color: red;
 }

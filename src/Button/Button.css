@@ -2,14 +2,8 @@
   height: 50px;
   width: 260px;
   background-color: var(--theme-color);
-  font-size: large;
-  font-weight: bold;
-  font-variant-caps: all-petite-caps;
   color: white;
   border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
 }
 .Button:hover {

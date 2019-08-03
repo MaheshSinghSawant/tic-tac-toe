@@ -47,17 +47,17 @@ export function SizeInput({ onSubmitHandler }: ISizeInputProps) {
 
   return (
     <div className="SizeInput">
-      <div className="SizeInput-gameHeader">Tic-Tac-Toe</div>
-      <div className="SizeInput-inputHeader">Enter desired size of board</div>
+      <div className="u-extraLargeFont">Tic-Tac-Toe</div>
+      <div className="SizeInput-inputHeader u-mediumFont u-colorTheme">Enter desired size of board</div>
       <input
         autoFocus={true}
-        className="SizeInput-inputField"
+        className="SizeInput-inputField u-largeFont"
         type="text"
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
       <Button text={"start game"} onClickHandler={handleSubmit} />
-      {state.error && <div className="SizeInput-error">{state.error}</div>}
+      {state.error && <div className="SizeInput-error u-mediumFont">{state.error}</div>}
     </div>
   )
 }
