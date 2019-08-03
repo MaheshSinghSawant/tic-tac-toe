@@ -24,6 +24,7 @@
 .Board-cell {
   box-sizing: border-box;
   border: 5px solid var(--theme-color);
+  cursor: pointer;
 }
 
 /* 

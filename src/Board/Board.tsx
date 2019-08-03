@@ -46,15 +46,17 @@ export function Board({ size }: IBoardProps) {
    * Also toggle player
    */
   const handleClick = (row: number, col: number) => {
-    let newBoard = state.board
-    newBoard[row][col] = state.player1 ? 1 : -1
-    let winner = calculateWinner(row, col, newBoard)
-    setState({
-      ...state,
-      board: newBoard,
-      player1: !state.player1,
-      winner: winner
-    })
+    if (!state.board[row][col]) {
+      let newBoard = state.board
+      newBoard[row][col] = state.player1 ? 1 : -1
+      let winner = calculateWinner(row, col, newBoard)
+      setState({
+        ...state,
+        board: newBoard,
+        player1: !state.player1,
+        winner: winner
+      })
+    }
   }
 
   /* Create the board, where each cell of the board represents an area where a user can click to create a cross or circle
