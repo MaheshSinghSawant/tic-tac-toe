@@ -76,7 +76,6 @@ export function Board({ size }: IBoardProps) {
       onClickHandler={() => window.location.reload()}
     />
   )
-  console.log(state.winner)
 
   if (state.winner > 0) {
     return (

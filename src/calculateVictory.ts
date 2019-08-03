@@ -6,28 +6,49 @@
 // 2. check if all cells in same column are of the same value, if so that value wins
 // 3. check diagonal and reverse diagonals for same value and if so, that value wins
 
-export function calculateWinner(row: number, col: number, board: any) {
-  const isRowAllX = board[row].every((ele: number) => ele === 1)
-  if (isRowAllX) {
-    return 1
-  }
+// check if each element is 1
+const isAllX = (arr: any) => {
+  return arr.every((ele: number) => ele === 1)
+}
+// check if each element is -1
+const isAllO = (arr: any) => {
+  return arr.every((ele: number) => ele === -1)
+}
 
-  const isRowAllO = board[row].every((ele: number) => ele === -1)
-  if (isRowAllO) {
-    return 2
-  }
+export function calculateWinner(row: number, col: number, board: any) {
   // create a list of all values in same column
   let colValues = []
   for (let i = 0; i < board.length; i++) {
     colValues.push(board[i][col])
   }
 
-  const isColAllX = colValues.every((ele: number) => ele === 1)
-  if (isColAllX) {
+  // fill diagonal array in linear time
+  let diagonalArr = []
+  for (let i = 0; i < board.length; i++) {
+    diagonalArr.push(board[i][i])
+  }
+
+  // fill reverse diagonal in linear time
+  let reverseDiagonalArr = []
+  for (let i = 0; i < board.length; i++) {
+    reverseDiagonalArr.push(board[i][board.length - 1 - i])
+  }
+
+  if (
+    isAllX(board[row]) ||
+    isAllX(colValues) ||
+    isAllX(diagonalArr) ||
+    isAllX(reverseDiagonalArr)
+  ) {
     return 1
   }
-  const isColAllO = colValues.every((ele: number) => ele === -1)
-  if (isColAllO) {
+
+  if (
+    isAllO(board[row]) ||
+    isAllO(colValues) ||
+    isAllO(diagonalArr) ||
+    isAllO(reverseDiagonalArr)
+  ) {
     return 2
   }
 

@@ -20,14 +20,15 @@
   flex-wrap: wrap;
 }
 
-/* Each cell has a border and can  */
+/* Each cell has a border*/
 .Board-cell {
   box-sizing: border-box;
   border: 5px solid var(--theme-color);
 }
 
-/* create border around the board that overlaps all 4 edges of the board with backgorund color
-   also make all pointer events pass though to the actual board cell
+/* 
+create border around the board that overlaps all 4 edges of the board with backgorund color
+also make all pointer events pass though to the actual board cell
 */
 .Board-border {
   pointer-events: none;
